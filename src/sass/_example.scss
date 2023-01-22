@@ -42,7 +42,7 @@ a {
   flex-wrap: wrap;
 }
 .gallery {
-  padding-top: 60px;
+  padding-top: 130px;
   justify-content: center;
   gap: 20px;
 }
@@ -60,6 +60,7 @@ a {
 .gallery-item__img {
   display: block;
   width: 300px;
+  height: 200px;
 }
 
 .info {
