@@ -16,7 +16,7 @@ searchForm.addEventListener('submit', onFormSearch);
 
 async function onFormSearch(evt) {
   evt.preventDefault();
-  const query = await evt.target.searchQuery.value.trim().toLowerCase();
+  const query = evt.target.searchQuery.value.trim().toLowerCase();
   gallery.innerHTML = '';
   console.log(query);
 
@@ -36,10 +36,13 @@ async function onFormSearch(evt) {
     } else {
       Notify.success(`Hooray! We found ${data.totalHits} images.`);
       const markup = renderGallery(data);
-
-      gallery.insertAdjacentHTML('beforeend', markup);
+      addListMarkup();
     }
   } catch (error) {}
+}
+
+function addListMarkup(markup = '') {
+  gallery.insertAdjacentHTML('beforeend', markup);
 }
 
 function alertInputEmpty() {
