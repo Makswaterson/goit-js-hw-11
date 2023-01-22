@@ -14,8 +14,9 @@ const perPage = 40;
 
 searchForm.addEventListener('submit', onFormSearch);
 
-async function onFormSearch(evt) {
+function onFormSearch(evt) {
   evt.preventDefault();
+  page = 1;
   const query = evt.target.searchQuery.value.trim().toLowerCase();
   gallery.innerHTML = '';
   console.log(query);
@@ -25,20 +26,19 @@ async function onFormSearch(evt) {
     return;
   }
 
-  try {
-    page = 1;
-    const data = await fetchImage(query, page, perPage);
+  fetchImage(query, page, perPage).then(({ data }) => {
     console.log(data);
-    if (!data.totalHits) {
-      gallery.innerHTML = '';
-      alertInputEmpty();
-      return;
-    } else {
-      Notify.success(`Hooray! We found ${data.totalHits} images.`);
-      const markup = renderGallery(data);
-      addListMarkup();
-    }
-  } catch (error) {}
+  });
+
+  if (!data.totalHits) {
+    gallery.innerHTML = '';
+    alertInputEmpty();
+    return;
+  } else {
+    Notify.success(`Hooray! We found ${data.totalHits} images.`);
+    const markup = renderGallery(data);
+    addListMarkup(markup);
+  }
 }
 
 function addListMarkup(markup = '') {
@@ -50,3 +50,46 @@ function alertInputEmpty() {
     `Sorry, there are no images matching your search query. Please try again.`
   );
 }
+
+// searchForm.addEventListener('submit', onFormSearch);
+
+// async function onFormSearch(evt) {
+//   evt.preventDefault();
+
+//   const query = evt.target.searchQuery.value.trim().toLowerCase();
+//   gallery.innerHTML = '';
+//   console.log(query);
+
+//   if (!query) {
+//     alertInputEmpty();
+//     return;
+//   }
+
+//   try {
+//     page = 1;
+//     const data = await fetchImage(query, page, perPage);
+//     console.log(data);
+//     if (!data.totalHits) {
+//       gallery.innerHTML = '';
+//       alertInputEmpty();
+//       return;
+//     } else {
+//       Notify.success(`Hooray! We found ${data.totalHits} images.`);
+//       const markup = renderGallery(data);
+//       function addListMarkup(markup) {
+//         console.log(markup);
+//         gallery.insertAdjacentHTML('beforeend', markup);
+//       }
+//     }
+//   } catch (error) {}
+// }
+
+// function addListMarkup(markup = '') {
+//   gallery.insertAdjacentHTML('beforeend', markup);
+// }
+
+// function alertInputEmpty() {
+//   Notify.failure(
+//     `Sorry, there are no images matching your search query. Please try again.`
+//   );
+// }
