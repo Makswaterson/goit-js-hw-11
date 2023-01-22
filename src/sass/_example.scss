@@ -1,28 +1,78 @@
-.example {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.5;
-  background-color: #fff;
-  color: #2f2f37;
-  max-width: 960px;
-  padding: 16px;
+a {
+  text-decoration: none;
 }
 
-.example code {
-  font-family: monospace;
-  font-size: 16px;
-  font-weight: 700;
-  background-color: #ff6b0a;
-  color: #fff;
-  padding: 2px 6px;
-  border-radius: 2px;
+.search-container {
+  z-index: 999;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: fixed;
+  background-color: rgb(9, 221, 237);
+}
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+.search-form input {
+  width: 300px;
+  padding: 20px 20px;
+}
+.search-form button {
+  display: flex;
+  margin-left: 12px;
+  width: 70px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.search-form button:hover,
+.search-form button:focus {
+  background-color: rgb(53, 162, 31);
+  border-color: black;
+}
+.gallery-container {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-.example .background {
-  height: 240px;
-  // ❗️❗️❗️ The path to images from a SASS file
-  // is always the same as from the css folder.
-  background-image: url('../images/logo.png');
-  background-size: cover;
-  background-position: center;
+.gallery,
+.info {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gallery {
+  padding-top: 60px;
+  justify-content: center;
+  gap: 20px;
+}
+
+.gallery__link:hover,
+.gallery__link:focus {
+  transform: scale(1.05);
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-item__img {
+  display: block;
+  width: 300px;
+}
+
+.info {
+  padding: 10px;
+  justify-content: space-around;
+}
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+.info-item:not(:first-child) {
+  margin-left: 5px;
 }
