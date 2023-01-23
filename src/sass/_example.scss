@@ -77,3 +77,24 @@ a {
 .info-item:not(:first-child) {
   margin-left: 5px;
 }
+.load-more.is-hidden {
+  display: none;
+}
+
+.load-more {
+  display: block;
+  margin: 25px auto 50px auto;
+  padding: 18px 37px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(9, 221, 237);
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.load-more:hover {
+  background-color: rgb(53, 162, 31);
+  color: aliceblue;
+  transition: all 0.3s;
+}
