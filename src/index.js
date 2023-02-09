@@ -80,18 +80,15 @@ function smoothScroll() {
   });
 }
 
-// function addListMarkup(markup = '') {
-//   galleryRef.insertAdjacentHTML('beforeend', markup);
-// }
-
 // searchForm.addEventListener('submit', onFormSearch);
+// loadMoreBtn.addEventListener('click', onLoadMoreBtn);
 
 // async function onFormSearch(evt) {
 //   evt.preventDefault();
-
+//   page = 1;
 //   const query = evt.target.searchQuery.value.trim().toLowerCase();
-//  galleryRef.innerHTML = '';
-//   console.log(query);
+//   galleryRef.innerHTML = '';
+//   loadMoreBtn.classList.add('is-hidden');
 
 //   if (!query) {
 //     alertInputEmpty();
@@ -99,24 +96,52 @@ function smoothScroll() {
 //   }
 
 //   try {
-//     page = 1;
-//     const data = await fetchImage(query, page, perPage);
+//     const { data } = await fetchImage(query, page, perPage);
 //     console.log(data);
 //     if (!data.totalHits) {
-//      galleryRef.innerHTML = '';
+//       galleryRef.innerHTML = '';
 //       alertInputEmpty();
 //       return;
 //     } else {
 //       Notify.success(`Hooray! We found ${data.totalHits} images.`);
-//       const markup = renderGallery(data);
-//       function addListMarkup(markup) {
-//       }
+//       console.log(data.totalHits);
+//       renderGallery(data.hits);
+//       gallery.refresh();
 //     }
-//   } catch (error) {}
+//     if (data.totalHits > perPage) {
+//       loadMoreBtn.classList.remove('is-hidden');
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
 // }
 
-// function addListMarkup(markup = '') {
-//  galleryRef.insertAdjacentHTML('beforeend', markup);
+// async function onLoadMoreBtn() {
+//   try {
+//     page += 1;
+//     const { data } = await fetchImage(query, page, perPage);
+//     renderGallery(data.hits);
+//     gallery.refresh();
+//     smoothScroll();
+//     const totalPages = Math.ceil(data.totalHits / perPage);
+//     if (page > totalPages) {
+//       loadMoreBtn.classList.add('is-hidden');
+//       Notify.info("We're sorry, but you've reached the end of search results.");
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+// function smoothScroll() {
+//   const { height: cardHeight } = document
+//     .querySelector('.gallery')
+//     .firstElementChild.getBoundingClientRect();
+
+//   window.scrollBy({
+//     top: cardHeight * 2,
+//     behavior: 'smooth',
+//   });
 // }
 
 // function alertInputEmpty() {
