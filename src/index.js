@@ -20,7 +20,7 @@ loadMoreBtn.addEventListener('click', onLoadMoreBtn);
 function onFormSearch(evt) {
   evt.preventDefault();
   page = 1;
-  const query = evt.target.searchQuery.value.trim().toLowerCase();
+  query = evt.target.searchQuery.value.trim().toLowerCase();
   galleryRef.innerHTML = '';
   loadMoreBtn.classList.add('is-hidden');
 
@@ -56,11 +56,16 @@ function onLoadMoreBtn() {
   page += 1;
   fetchImage(query, page, perPage)
     .then(({ data }) => {
+      console.log(query);
+      console.log(page);
+      console.log(perPage);
       renderGallery(data.hits);
       gallery.refresh();
       smoothScroll();
       const totalPages = Math.ceil(data.totalHits / perPage);
-      if (page > totalPages) {
+      console.log(totalPages);
+      console.log(data.totalHits);
+      if (page >= totalPages) {
         loadMoreBtn.classList.add('is-hidden');
         Notify.info(
           "We're sorry, but you've reached the end of search results."
