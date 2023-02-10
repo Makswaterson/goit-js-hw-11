@@ -91,7 +91,7 @@ function smoothScroll() {
 // async function onFormSearch(evt) {
 //   evt.preventDefault();
 //   page = 1;
-//   const query = evt.target.searchQuery.value.trim().toLowerCase();
+//   query = evt.target.searchQuery.value.trim().toLowerCase();
 //   galleryRef.innerHTML = '';
 //   loadMoreBtn.classList.add('is-hidden');
 
@@ -129,7 +129,7 @@ function smoothScroll() {
 //     gallery.refresh();
 //     smoothScroll();
 //     const totalPages = Math.ceil(data.totalHits / perPage);
-//     if (page > totalPages) {
+//     if (page >= totalPages) {
 //       loadMoreBtn.classList.add('is-hidden');
 //       Notify.info("We're sorry, but you've reached the end of search results.");
 //     }
